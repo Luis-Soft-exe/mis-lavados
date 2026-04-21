@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Lavados</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #121212; color: white; text-align: center; padding: 20px; }
-        .selector-box { background: #1e1e1e; padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        select { padding: 12px 20px; font-size: 18px; border-radius: 8px; background: #00d4ff; color: black; font-weight: bold; border: none; cursor: pointer; width: 90%; max-width: 350px; }
-        .contenido-lavado { display: none; animation: fadeIn 0.5s; }
+        body { font-family: sans-serif; background-color: #121212; color: white; text-align: center; padding: 20px; }
+        .selector-box { background: #1e1e1e; padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #333; }
+        select { padding: 12px; font-size: 18px; border-radius: 8px; background: #00d4ff; color: black; font-weight: bold; width: 90%; max-width: 350px; }
+        .contenido-lavado { display: none; }
         .seccion { background: #1e1e1e; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 900px; border: 1px solid #222; }
-        img { width: 45%; border-radius: 8px; margin: 5px; border: 2px solid #333; transition: transform 0.3s; }
-        img:hover { transform: scale(1.05); }
-        h1 { color: #00d4ff; text-transform: uppercase; letter-spacing: 2px; }
-        h2 { color: #aaa; font-size: 1.1rem; margin-top: 0; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        img { width: 45%; border-radius: 8px; margin: 5px; border: 2px solid #333; }
+        h1 { color: #00d4ff; }
+        h2 { color: #ccc; }
     </style>
 </head>
 <body>
@@ -22,23 +20,22 @@
     <h1>Panel de Producción</h1>
     
     <div class="selector-box">
-        <h2>Selecciona un Estilo de Lavado:</h2>
-        <select id="lavadoSelect" onchange="mostrarLavado()">
-            <option value="">-- Toca para elegir lavado --</option>
-            <option value="delt">Lavado DELT</option>
-            <option value="mobu">Lavado MOBU</option>
-            <option value="ovrw">Lavado OVRW</option>
+        <select id="lavadoSelect" onchange="mostrar()">
+            <option value="">-- Selecciona Lavado --</option>
+            <option value="delt">DELT</option>
+            <option value="mobu">MOBU</option>
+            <option value="ovrw">OVRW</option>
         </select>
     </div>
 
     <div id="delt" class="contenido-lavado">
         <div class="seccion">
-            <h2>DELT - Frontal (Diseño vs Lavado)</h2>
+            <h2>DELT - Frontal</h2>
             <img src="img/DELT/DELT_frente_bmp.jpg">
             <img src="img/DELT/DELT_frente_lavado.jpg">
         </div>
         <div class="seccion">
-            <h2>DELT - Trasera (Diseño vs Lavado)</h2>
+            <h2>DELT - Trasera</h2>
             <img src="img/DELT/DELT_trasera_bmp.jpg">
             <img src="img/DELT/DELT_trasera_lavado.jpg">
         </div>
@@ -46,42 +43,37 @@
 
     <div id="mobu" class="contenido-lavado">
         <div class="seccion">
-            <h2>MOBU - Frontal (Diseño vs Lavado)</h2>
-            <img src="img/MOBU/MOBU_frente_bmp.JPG">
-            <img src="img/MOBU/MOBU_frente_lavado.JPG">
+            <h2>MOBU - Frontal</h2>
+            <img src="img/MOBU/MOBU_frente_bmp.JPG.jpg">
+            <img src="img/MOBU/MOBU_frente_lavado.JPG.jpg">
         </div>
         <div class="seccion">
-            <h2>MOBU - Trasera (Diseño vs Lavado)</h2>
-            <img src="img/MOBU/MOBU_trasera_bmp.JPG">
-            <img src="img/MOBU/MOBU_trasera_lavado.JPG">
+            <h2>MOBU - Trasera</h2>
+            <img src="img/MOBU/MOBU_trasera_bmp.JPG.jpg">
+            <img src="img/MOBU/MOBU_trasera_lavado.JPG.jpg">
         </div>
     </div>
 
     <div id="ovrw" class="contenido-lavado">
         <div class="seccion">
-            <h2>OVRW - Frontal (Diseño vs Lavado)</h2>
-            <img src="img/OVRW/OVRW_frente_bmp.JPG">
-            <img src="img/OVRW/OVRW_frente_lavado.JPG">
+            <h2>OVRW - Frontal</h2>
+            <img src="img/OVRW/OVRW_frente_bmp.JPG.jpg">
+            <img src="img/OVRW/OVRW_frente_lavado.JPG.jpg">
         </div>
         <div class="seccion">
-            <h2>OVRW - Trasera (Diseño vs Lavado)</h2>
-            <img src="img/OVRW/OVRW_trasera_bmp.JPG">
-            <img src="img/OVRW/OVRW_trasera_lavado.JPG">
+            <h2>OVRW - Trasera</h2>
+            <img src="img/OVRW/OVRW_trasera_bmp.JPG.jpg">
+            <img src="img/OVRW/OVRW_trasera_lavado.JPG.jpg">
         </div>
     </div>
 
     <script>
-        function mostrarLavado() {
-            var eleccion = document.getElementById("lavadoSelect").value;
-            var todos = document.getElementsByClassName("contenido-lavado");
-            for (var i = 0; i < todos.length; i++) {
-                todos[i].style.display = "none";
-            }
-            if (eleccion !== "") {
-                document.getElementById(eleccion).style.display = "block";
-            }
+        function mostrar() {
+            var val = document.getElementById("lavadoSelect").value;
+            var divs = document.getElementsByClassName("contenido-lavado");
+            for(var i=0; i<divs.length; i++) { divs[i].style.display = "none"; }
+            if(val) document.getElementById(val).style.display = "block";
         }
     </script>
-
 </body>
 </html>
