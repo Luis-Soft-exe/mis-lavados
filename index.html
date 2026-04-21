@@ -6,27 +6,27 @@
     <title>Catálogo de Lavados</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #121212; color: white; text-align: center; padding: 20px; }
-        .selector-box { background: #1e1e1e; padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #333; }
-        select { padding: 12px 20px; font-size: 18px; border-radius: 8px; background: #00d4ff; color: black; font-weight: bold; border: none; cursor: pointer; width: 80%; max-width: 300px; }
+        .selector-box { background: #1e1e1e; padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        select { padding: 12px 20px; font-size: 18px; border-radius: 8px; background: #00d4ff; color: black; font-weight: bold; border: none; cursor: pointer; width: 90%; max-width: 350px; }
         .contenido-lavado { display: none; animation: fadeIn 0.5s; }
         .seccion { background: #1e1e1e; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 900px; border: 1px solid #222; }
         img { width: 45%; border-radius: 8px; margin: 5px; border: 2px solid #333; transition: transform 0.3s; }
-        img:hover { transform: scale(1.02); }
-        h1 { color: #00d4ff; margin-bottom: 10px; }
+        img:hover { transform: scale(1.05); }
+        h1 { color: #00d4ff; text-transform: uppercase; letter-spacing: 2px; }
         h2 { color: #aaa; font-size: 1.1rem; margin-top: 0; }
-        .visible { display: block ! anonymity; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <h1>Catálogo de Producción</h1>
+    <h1>Panel de Producción</h1>
     
     <div class="selector-box">
-        <h2>Selecciona el estilo de lavado:</h2>
+        <h2>Selecciona un Estilo de Lavado:</h2>
         <select id="lavadoSelect" onchange="mostrarLavado()">
-            <option value="">-- Toca para elegir --</option>
+            <option value="">-- Toca para elegir lavado --</option>
             <option value="delt">Lavado DELT</option>
+            <option value="mobu">Lavado MOBU</option>
             <option value="ovrw">Lavado OVRW</option>
         </select>
     </div>
@@ -34,41 +34,49 @@
     <div id="delt" class="contenido-lavado">
         <div class="seccion">
             <h2>DELT - Frontal (Diseño vs Lavado)</h2>
-            <img src="img/DELT_frente_bmp.jpg" alt="DELT Frente BMP">
-            <img src="img/DELT_frente_lavado.jpg" alt="DELT Frente Lavado">
+            <img src="img/DELT/DELT_frente_bmp.jpg">
+            <img src="img/DELT/DELT_frente_lavado.jpg">
         </div>
         <div class="seccion">
             <h2>DELT - Trasera (Diseño vs Lavado)</h2>
-            <img src="img/DELT_trasera_bmp.jpg" alt="DELT Trasera BMP">
-            <img src="img/DELT_trasera_lavado.jpg" alt="DELT Trasera Lavado">
+            <img src="img/DELT/DELT_trasera_bmp.jpg">
+            <img src="img/DELT/DELT_trasera_lavado.jpg">
+        </div>
+    </div>
+
+    <div id="mobu" class="contenido-lavado">
+        <div class="seccion">
+            <h2>MOBU - Frontal (Diseño vs Lavado)</h2>
+            <img src="img/MOBU/MOBU_frente_bmp.JPG">
+            <img src="img/MOBU/MOBU_frente_lavado.JPG">
+        </div>
+        <div class="seccion">
+            <h2>MOBU - Trasera (Diseño vs Lavado)</h2>
+            <img src="img/MOBU/MOBU_trasera_bmp.JPG">
+            <img src="img/MOBU/MOBU_trasera_lavado.JPG">
         </div>
     </div>
 
     <div id="ovrw" class="contenido-lavado">
         <div class="seccion">
             <h2>OVRW - Frontal (Diseño vs Lavado)</h2>
-            <img src="img/OVRW_frente_bmp.jpg" alt="OVRW Frente BMP">
-            <img src="img/OVRW_frente_lavado.jpg" alt="OVRW Frente Lavado">
+            <img src="img/OVRW/OVRW_frente_bmp.JPG">
+            <img src="img/OVRW/OVRW_frente_lavado.JPG">
         </div>
         <div class="seccion">
             <h2>OVRW - Trasera (Diseño vs Lavado)</h2>
-            <img src="img/OVRW_trasera_bmp.jpg" alt="OVRW Trasera BMP">
-            <img src="img/OVRW_trasera_lavado.jpg" alt="OVRW Trasera Lavado">
+            <img src="img/OVRW/OVRW_trasera_bmp.JPG">
+            <img src="img/OVRW/OVRW_trasera_lavado.JPG">
         </div>
     </div>
 
     <script>
         function mostrarLavado() {
-            // 1. Obtener lo que el usuario eligió
             var eleccion = document.getElementById("lavadoSelect").value;
-            
-            // 2. Esconder todos los contenidos primero
             var todos = document.getElementsByClassName("contenido-lavado");
             for (var i = 0; i < todos.length; i++) {
                 todos[i].style.display = "none";
             }
-            
-            // 3. Mostrar solo el que eligió
             if (eleccion !== "") {
                 document.getElementById(eleccion).style.display = "block";
             }
