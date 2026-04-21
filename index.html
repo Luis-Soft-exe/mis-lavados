@@ -3,28 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Lavado DELT</title>
+    <title>Catálogo de Lavados</title>
     <style>
-        body { font-family: sans-serif; background-color: #121212; color: white; text-align: center; padding: 20px; }
-        .seccion { background: #1e1e1e; padding: 15px; border-radius: 10px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        img { width: 45%; border-radius: 5px; margin: 5px; border: 1px solid #444; }
-        h1 { color: #00d4ff; }
-        h2 { border-bottom: 1px solid #333; padding-bottom: 10px; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #121212; color: white; text-align: center; padding: 20px; }
+        .selector-box { background: #1e1e1e; padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #333; }
+        select { padding: 12px 20px; font-size: 18px; border-radius: 8px; background: #00d4ff; color: black; font-weight: bold; border: none; cursor: pointer; width: 80%; max-width: 300px; }
+        .contenido-lavado { display: none; animation: fadeIn 0.5s; }
+        .seccion { background: #1e1e1e; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 900px; border: 1px solid #222; }
+        img { width: 45%; border-radius: 8px; margin: 5px; border: 2px solid #333; transition: transform 0.3s; }
+        img:hover { transform: scale(1.02); }
+        h1 { color: #00d4ff; margin-bottom: 10px; }
+        h2 { color: #aaa; font-size: 1.1rem; margin-top: 0; }
+        .visible { display: block ! anonymity; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
-    <h1>Muestrario: Lavado DELT</h1>
 
-    <div class="seccion">
-        <h2>Parte Frontal (Diseño vs Lavado)</h2>
-        <img src="img/DELT_frente_bmp.jpg" alt="Frente Diseño">
-        <img src="img/DELT_frente_lavado.jpg" alt="Frente Lavado">
+    <h1>Catálogo de Producción</h1>
+    
+    <div class="selector-box">
+        <h2>Selecciona el estilo de lavado:</h2>
+        <select id="lavadoSelect" onchange="mostrarLavado()">
+            <option value="">-- Toca para elegir --</option>
+            <option value="delt">Lavado DELT</option>
+            <option value="ovrw">Lavado OVRW</option>
+        </select>
     </div>
 
-    <div class="seccion">
-        <h2>Parte Trasera (Diseño vs Lavado)</h2>
-        <img src="img/DELT_trasera_bmp.jpg" alt="Trasera Diseño">
-        <img src="img/DELT_trasera_lavado.jpg" alt="Trasera Lavado">
+    <div id="delt" class="contenido-lavado">
+        <div class="seccion">
+            <h2>DELT - Frontal (Diseño vs Lavado)</h2>
+            <img src="img/DELT_frente_bmp.jpg" alt="DELT Frente BMP">
+            <img src="img/DELT_frente_lavado.jpg" alt="DELT Frente Lavado">
+        </div>
+        <div class="seccion">
+            <h2>DELT - Trasera (Diseño vs Lavado)</h2>
+            <img src="img/DELT_trasera_bmp.jpg" alt="DELT Trasera BMP">
+            <img src="img/DELT_trasera_lavado.jpg" alt="DELT Trasera Lavado">
+        </div>
     </div>
+
+    <div id="ovrw" class="contenido-lavado">
+        <div class="seccion">
+            <h2>OVRW - Frontal (Diseño vs Lavado)</h2>
+            <img src="img/OVRW_frente_bmp.jpg" alt="OVRW Frente BMP">
+            <img src="img/OVRW_frente_lavado.jpg" alt="OVRW Frente Lavado">
+        </div>
+        <div class="seccion">
+            <h2>OVRW - Trasera (Diseño vs Lavado)</h2>
+            <img src="img/OVRW_trasera_bmp.jpg" alt="OVRW Trasera BMP">
+            <img src="img/OVRW_trasera_lavado.jpg" alt="OVRW Trasera Lavado">
+        </div>
+    </div>
+
+    <script>
+        function mostrarLavado() {
+            // 1. Obtener lo que el usuario eligió
+            var eleccion = document.getElementById("lavadoSelect").value;
+            
+            // 2. Esconder todos los contenidos primero
+            var todos = document.getElementsByClassName("contenido-lavado");
+            for (var i = 0; i < todos.length; i++) {
+                todos[i].style.display = "none";
+            }
+            
+            // 3. Mostrar solo el que eligió
+            if (eleccion !== "") {
+                document.getElementById(eleccion).style.display = "block";
+            }
+        }
+    </script>
+
 </body>
 </html>
